@@ -1,7 +1,7 @@
 #!/bin/sh
 
-echo '#!/usr/bin/env bash' | sudo tee /usr/local/bin/hal > /dev/null
-echo '/opt/halyard/bin/hal "$@"' | sudo tee /usr/local/bin/hal > /dev/null
+echo '#!/usr/bin/env bash' | tee /usr/local/bin/hal > /dev/null
+echo '/opt/halyard/bin/hal "$@"' | tee /usr/local/bin/hal > /dev/null
 
 chmod +x /usr/local/bin/hal
 
@@ -11,9 +11,9 @@ if [ -f "/opt/spinnaker/config/halyard-user" ]; then
 fi
 
 if [ -z "$HAL_USER" ]; then
-  HAL_USER="ubuntu"
+  HAL_USER="root"
 fi
 
 install --mode=755 --owner=$HAL_USER --group=$HAL_USER --directory /var/log/spinnaker/halyard
 
-service halyard restart
+#service halyard restart
